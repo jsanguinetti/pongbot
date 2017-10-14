@@ -3,21 +3,18 @@
 
 const _ = require('lodash')
 const config = require('../config')
-const Botkit = require('botkit')
 const stubbedRepos = require('../repos')
-
-var controller = Botkit.slackbot({})
-var bot = controller.spawn()
-
-bot.configureIncomingWebhook({ url: config('WEBHOOK_URL') })
+const IncomingWebhook = require('@slack/client').IncomingWebhook
 
 const msgDefaults = {
-  response_type: 'in_channel',
-  username: 'Starbot',
-  icon_emoji: config('ICON_EMOJI')
+  responseType: 'in_channel',
+  username: 'Pongbot',
+  iconEmoji: config('ICON_EMOJI')
 }
 
-var attachments = [].map((repo) => {
+const webhook = new IncomingWebhook(config('WEBHOOK_URL'), msgDefaults)
+
+var attachments = stubbedRepos.map((repo) => {
   return {
     title: `${repo.owner}/${repo.title} `,
     title_link: repo.url,
@@ -26,9 +23,9 @@ var attachments = [].map((repo) => {
   }
 })
 
-let msg = _.defaults({ attachments: attachments }, msgDefaults)
+let msg = { attachments: attachments }
 
-bot.sendWebhook(msg, (err, res) => {
+webhook.send(msg, (err, res) => {
   if (err) throw err
 
   console.log(`\n🚀  Pongbot report delivered 🚀`)
