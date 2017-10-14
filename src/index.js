@@ -26,8 +26,6 @@ app.get('/', (req, res) => { res.send('\n 👋 🌍 \n') })
 
 app.post('/commands/pongbot', (req, res) => {
   let payload = req.body
-  console.log('payload', payload)
-  console.log('config(PONGBOT_COMMAND_TOKEN)', config('PONGBOT_COMMAND_TOKEN'))
   if (!payload || payload.token !== config('PONGBOT_COMMAND_TOKEN')) {
     let err = '✋  Pong—what? An invalid slash token was provided\n' +
               '   Is your Slack slash token correctly configured?'
@@ -36,10 +34,10 @@ app.post('/commands/pongbot', (req, res) => {
     return
   }
 
-  let cmd = _.reduce(commands, (a, cmd) => {
-    return payload.text.match(cmd.pattern) ? cmd : a
-  }, helpCommand)
-  console.log('cmd', cmd)
+  let cmd = _.find(commands, (cmd) => {
+    return payload.text.match(cmd.pattern)
+  }) || helpCommand
+
   cmd.handler(payload, res)
 })
 
