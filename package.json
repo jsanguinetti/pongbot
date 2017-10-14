@@ -1,6 +1,6 @@
 {
   "name": "starbot",
-  "description": "Starbot is GitHub's trending open-source page, reincarnated as a Slack bot",
+  "description": "Pongbot is CodigoDelSur's Table Tennis bot",
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
@@ -9,12 +9,11 @@
     "test": "standard"
   },
   "author": {
-    "email": "creager@heroku.com",
-    "name": "Matthew Creager",
-    "url": "https://twitter.com/matt_creager"
+    "email": "jsangui@gmail.com",
+    "name": "Javier Sanguinetti"
   },
   "bugs": {
-    "url": "https://github.com/mattcreager"
+    "url": "https://github.com/jsanguinetti"
   },
   "dependencies": {
     "@slack/client": "^3.14.1",

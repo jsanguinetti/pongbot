@@ -24,12 +24,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => { res.send('\n 👋 🌍 \n') })
 
-app.post('/commands/starbot', (req, res) => {
+app.post('/commands/pongbot', (req, res) => {
   let payload = req.body
   console.log('payload', payload)
-  console.log('config(STARBOT_COMMAND_TOKEN)', config('STARBOT_COMMAND_TOKEN'))
-  if (!payload || payload.token !== config('STARBOT_COMMAND_TOKEN')) {
-    let err = '✋  Star—what? An invalid slash token was provided\n' +
+  console.log('config(PONGBOT_COMMAND_TOKEN)', config('PONGBOT_COMMAND_TOKEN'))
+  if (!payload || payload.token !== config('PONGBOT_COMMAND_TOKEN')) {
+    let err = '✋  Pong—what? An invalid slash token was provided\n' +
               '   Is your Slack slash token correctly configured?'
     console.log(err)
     res.status(401).end(err)
@@ -46,10 +46,10 @@ app.post('/commands/starbot', (req, res) => {
 app.listen(config('PORT'), (err) => {
   if (err) throw err
 
-  console.log(`\n🚀  Starbot LIVES on PORT ${config('PORT')} 🚀`)
+  console.log(`\n🚀  Pongbot LIVES on PORT ${config('PORT')} 🚀`)
 
   if (config('SLACK_TOKEN')) {
-    console.log(`🤖  beep boop: @starbot is real-time\n`)
+    console.log(`🤖  beep boop: @pongbot is real-time\n`)
     bot.start()
   }
 })

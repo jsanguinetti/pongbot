@@ -11,10 +11,10 @@ const config = {
   PORT: process.env.PORT,
   PROXY_URI: process.env.PROXY_URI,
   WEBHOOK_URL: process.env.WEBHOOK_URL,
-  STARBOT_COMMAND_TOKEN: process.env.STARBOT_COMMAND_TOKEN,
+  PONGBOT_COMMAND_TOKEN: process.env.PONGBOT_COMMAND_TOKEN,
   SLACK_TOKEN: process.env.SLACK_TOKEN,
   SLACK_BOT_TOKEN: process.env.SLACK_BOT_TOKEN,
-  ICON_EMOJI: ':stars:'
+  ICON_EMOJI: ':table_tennis_paddle_and_ball:'
 }
 
 module.exports = (key) => {

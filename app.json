@@ -1,18 +1,18 @@
 {
-  "name": "🌟 Starbot",
-  "description": "Starbot is GitHub's trending open-source page, reincarnated as a Slack bot",
-  "repository": "https://github.com/mattcreager/starbot",
-  "logo": "https://heroku-www-files.s3.amazonaws.com/starbot/starbot-icon.png",
+  "name": "🏓 pongbot",
+  "description": "Pongbot is CodigoDelSur's Table Tennis bot",
+  "repository": "https://github.com/jsanguinetti/pongbot",
+  "logo": "https://www.imageupload.co.uk/images/2017/10/14/pongbot-icon.png",
   "success_url": "/",
   "env": {
     "HEROKU_APP_NAME": {
       "required": true
     },
-    "STARBOT_COMMAND_TOKEN": {
-      "description": "Slash command token, for the starbot command endpoint",
+    "PONGBOT_COMMAND_TOKEN": {
+      "description": "Slash command token, for the pongbot command endpoint",
       "required": true
     },
-    "SLACK_TOKEN": {
+    "SLACK_BOT_TOKEN": {
       "description": "Slack bot RTM API token",
       "required": false
     },

@@ -6,21 +6,21 @@ const config = require('../config')
 
 const msgDefaults = {
   response_type: 'in_channel',
-  username: 'Starbot',
+  username: 'Pongbot',
   icon_emoji: config('ICON_EMOJI')
 }
 
 let attachments = [
   {
-    title: 'Starbot will help you find the hippest repos on GitHub',
+    title: 'Pongbot will bring you CodigoDelSur table tennis latest ranking',
     color: '#2FA44F',
-    text: '`/starbot repos` returns hip repos \n`/starbot javascript` returns hip JavaScript repos',
+    text: '`/pongbot rank` returns current ranking :table_tennis_paddle_and_ball:',
     mrkdwn_in: ['text']
   },
   {
-    title: 'Configuring Starbot',
+    title: 'Configuring Pongbot',
     color: '#E3E4E6',
-    text: '`/starbot help` ... you\'re lookin at it! \n',
+    text: '`/pongbot help` ... you\'re lookin at it! \n',
     mrkdwn_in: ['text']
   }
 ]
@@ -31,7 +31,6 @@ const handler = (payload, res) => {
     attachments: attachments
   }, msgDefaults)
 
-  console.log('msg in HELP CMD', msg)
   res.set('content-type', 'application/json')
   res.status(200).json(msg)
   return
