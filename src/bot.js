@@ -1,33 +1,28 @@
 
 'use strict'
 
-const slack = require('slack')
+const RtmClient = require('@slack/client').RtmClient
+const CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS
 const _ = require('lodash')
 const config = require('./config')
 
-let bot = slack.rtm.client()
 
-bot.started((payload) => {
-  this.self = payload.self
-})
+let bot = new RtmClient(config('SLACK_TOKEN'))
 
-bot.message((msg) => {
-  if (!msg.user) return
-  if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
+let channel;
 
-  slack.chat.postMessage({
-    token: config('SLACK_TOKEN'),
-    icon_emoji: config('ICON_EMOJI'),
-    channel: msg.channel,
-    username: 'Starbot',
-    text: `beep boop: I hear you loud and clear!"`
-  }, (err, data) => {
-    if (err) throw err
+// The client will emit an RTM.AUTHENTICATED event on successful connection, with the `rtm.start` payload
+bot.on(CLIENT_EVENTS.RTM.AUTHENTICATED, (rtmStartData) => {
+  for (const c of rtmStartData.channels) {
+	  if (c.is_member && c.name ==='general') { channel = c.id }
+  }
+  console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}, but not yet connected to a channel`);
+});
 
-    let txt = _.truncate(data.message.text)
 
-    console.log(`🤖  beep boop: I responded with "${txt}"`)
-  })
-})
+// you need to wait for the client to fully connect before you can send messages
+bot.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, () => {
+  bot.sendMessage("Hello!", channel);
+});
 
 module.exports = bot

@@ -49,6 +49,6 @@ app.listen(config('PORT'), (err) => {
 
   if (config('SLACK_TOKEN')) {
     console.log(`🤖  beep boop: @starbot is real-time\n`)
-    bot.listen({ token: config('SLACK_TOKEN') })
+    bot.start()
   }
 })
