@@ -31,6 +31,7 @@ const handler = (payload, res) => {
     attachments: attachments
   }, msgDefaults)
 
+  console.log('msg in HELP CMD', msg)
   res.set('content-type', 'application/json')
   res.status(200).json(msg)
   return

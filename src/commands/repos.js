@@ -28,6 +28,7 @@ const handler = (payload, res) => {
       channel: payload.channel_name,
       attachments: attachments
     }, msgDefaults)
+    console.log('msg in REPOS CMD', msg)
 
     res.set('content-type', 'application/json')
     res.status(200).json(msg)

@@ -14,7 +14,7 @@ let channel;
 // The client will emit an RTM.AUTHENTICATED event on successful connection, with the `rtm.start` payload
 bot.on(CLIENT_EVENTS.RTM.AUTHENTICATED, (rtmStartData) => {
   for (const c of rtmStartData.channels) {
-	  if (c.is_member && c.name ==='general') { channel = c.id }
+	  if (c.is_member && c.is_general) { channel = c.id }
   }
   console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}, but not yet connected to a channel`);
 });
