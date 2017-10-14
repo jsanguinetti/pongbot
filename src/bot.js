@@ -7,7 +7,7 @@ const _ = require('lodash')
 const config = require('./config')
 
 
-let bot = new RtmClient(config('SLACK_TOKEN'))
+let bot = new RtmClient(config('SLACK_BOT_TOKEN'))
 
 let channel;
 
