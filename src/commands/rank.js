@@ -3,7 +3,8 @@
 
 const _ = require('lodash')
 const config = require('../config')
-const stubbedRepos = require('../repos')
+const tableMaker = require('string-table')
+const stubbedRank = require('../atp')
 
 const msgDefaults = {
   response_type: 'in_channel',
@@ -12,18 +13,11 @@ const msgDefaults = {
 }
 
 const handler = (payload, res) => {
-  var attachments = stubbedRepos.map((repo) => {
-    return {
-      title: `${repo.owner}/${repo.title} `,
-      title_link: repo.url,
-      text: `_${repo.description}_\n${repo.language} • ${repo.star}>`,
-      mrkdwn_in: ['text', 'pretext']
-    }
-  })
+  let content = tableMaker.create(stubbedRank)
 
   let msg = _.defaults({
     channel: payload.channel_name,
-    attachments: attachments
+    attachments: [{text: content}]
   }, msgDefaults)
 
   res.set('content-type', 'application/json')

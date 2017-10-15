@@ -3,7 +3,7 @@
 
 const _ = require('lodash')
 const config = require('../config')
-const stubbedRepos = require('../repos')
+const stubbedRank = require('../atp')
 const IncomingWebhook = require('@slack/client').IncomingWebhook
 
 const msgDefaults = {
@@ -14,16 +14,9 @@ const msgDefaults = {
 
 const webhook = new IncomingWebhook(config('WEBHOOK_URL'), msgDefaults)
 
-var attachments = stubbedRepos.map((repo) => {
-  return {
-    title: `${repo.owner}/${repo.title} `,
-    title_link: repo.url,
-    text: `_${repo.description}_\n${repo.language} • ${repo.star}`,
-    mrkdwn_in: ['text', 'pretext']
-  }
-})
+let content = tableMaker.create(stubbedRank)
 
-let msg = { attachments: attachments }
+let msg = { attachments: [{text: content}] }
 
 webhook.send(msg, (err, res) => {
   if (err) throw err
