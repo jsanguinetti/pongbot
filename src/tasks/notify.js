@@ -14,8 +14,10 @@ const msgDefaults = {
 
 const webhook = new IncomingWebhook(config('WEBHOOK_URL'), msgDefaults)
 
+const currentRanking = RankingService.getCurrentRanking()
+
 let msg = _.defaults({
-  text: RankingService.getCurrentRanking(),
+  text: currentRanking,
   mrkdwn: true
 }, msgDefaults)
 

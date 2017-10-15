@@ -11,10 +11,11 @@ const msgDefaults = {
   icon_emoji: config('ICON_EMOJI')
 }
 
-const handler = (payload, res) => {
+const handler = async (payload, res) => {
+  const currentRanking = await RankingService.getCurrentRanking()
   let msg = _.defaults({
     channel: payload.channel_name,
-    text: RankingService.getCurrentRanking(),
+    text: currentRanking,
     mrkdwn: true
   }, msgDefaults)
 
@@ -22,4 +23,4 @@ const handler = (payload, res) => {
   res.status(200).json(msg)
 }
 
-module.exports = { pattern: /rank/ig, handler: handler }
+module.exports = { pattern: /rank/ig, handler }

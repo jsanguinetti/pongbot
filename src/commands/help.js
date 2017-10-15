@@ -37,4 +37,4 @@ const handler = (payload, res) => {
   res.status(200).json(msg)
 }
 
-module.exports = { pattern: /help/ig, handler: handler }
+module.exports = { pattern: /help/ig, handler }

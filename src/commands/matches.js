@@ -22,4 +22,4 @@ const handler = (payload, res) => {
   res.status(200).json(msg)
 }
 
-module.exports = { pattern: /partidos/ig, handler: handler }
+module.exports = { pattern: /partidos/ig, handler }
