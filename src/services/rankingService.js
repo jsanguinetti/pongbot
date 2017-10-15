@@ -1,5 +1,5 @@
 const tableMaker = require('string-table')
-const stubbedRank = require('../atp')
+const stubbedRank = require('../data').rank
 
 function _preformat (str) {
   return '```' + str + '```'

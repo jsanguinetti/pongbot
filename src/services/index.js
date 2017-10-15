@@ -1,3 +1,4 @@
 module.exports = {
-  RankingService: require('./rankingService')
+  RankingService: require('./rankingService'),
+  MatchesService: require('./matchesService')
 }
