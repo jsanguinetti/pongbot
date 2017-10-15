@@ -18,20 +18,19 @@ let channel
 bot.on(CLIENT_EVENTS.RTM.AUTHENTICATED, (rtmStartData) => {
   let generalChannel = _.find(rtmStartData.channels, (c) => (c.is_member && c.is_general))
   channel = generalChannel && generalChannel.id
-  console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}, but not yet connected to a channel`);
+  console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}, but not yet connected to a channel`)
 })
-
 
 // you need to wait for the client to fully connect before you can send messages
 bot.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, () => {
-  bot.sendMessage('Hello!', channel);
+  bot.sendMessage('Hello!', channel)
 })
 
 bot.on(RTM_EVENTS.MESSAGE, (message) => {
   if (message.subtype !== 'bot_message' &&
       message.text.indexOf('/pongbot') === -1) {
     console.log('message', message)
-    bot.sendMessage('pong :table_tennis_paddle_and_ball:', message.channel);
+    bot.sendMessage('pong :table_tennis_paddle_and_ball:', message.channel)
   }
 })
 

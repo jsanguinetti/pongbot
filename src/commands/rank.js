@@ -20,7 +20,6 @@ const handler = (payload, res) => {
 
   res.set('content-type', 'application/json')
   res.status(200).json(msg)
-  return
 }
 
 module.exports = { pattern: /rank/ig, handler: handler }
