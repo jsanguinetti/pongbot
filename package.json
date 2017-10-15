@@ -1,5 +1,5 @@
 {
-  "name": "starbot",
+  "name": "pongbot",
   "description": "Pongbot is CodigoDelSur's Table Tennis bot",
   "version": "1.0.0",
   "main": "src/index.js",
