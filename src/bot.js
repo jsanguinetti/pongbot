@@ -6,9 +6,13 @@ const CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS
 const RTM_EVENTS = require('@slack/client').RTM_EVENTS
 const _ = require('lodash')
 const config = require('./config')
+const MemoryDataStore = require('@slack/client').MemoryDataStore;
 
 
-let bot = new RtmClient(config('SLACK_BOT_TOKEN'))
+let bot = new RtmClient(config('SLACK_BOT_TOKEN'), {
+  logLevel: 'error',
+  dataStore: new MemoryDataStore()
+})
 
 let channel
 
@@ -27,6 +31,7 @@ bot.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, () => {
 
 bot.on(RTM_EVENTS.MESSAGE, (message) => {
   console.log('message', message)
+  console.log('USER', bot.dataStore.getUserById(message.user))
   bot.sendMessage('pong :table_tennis_paddle_and_ball:', message.channel);
 })
 
