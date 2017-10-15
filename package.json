@@ -26,6 +26,7 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.13.17",
     "standard": "^10.0.3",
+    "sequelize-cli": "^3.0.0",
     "string-table": "^0.1.5"
   },
   "keywords": [
@@ -35,9 +36,6 @@
     "heroku"
   ],
   "license": "MIT",
-  "devDependencies": {
-    "sequelize-cli": "^3.0.0"
-  },
   "engines": {
     "node": ">= 7.6.0"
   }
