@@ -4,6 +4,7 @@
 const _ = require('lodash')
 const config = require('../config')
 const stubbedRank = require('../atp')
+const tableMaker = require('string-table')
 const IncomingWebhook = require('@slack/client').IncomingWebhook
 
 const msgDefaults = {
@@ -21,7 +22,6 @@ const webhook = new IncomingWebhook(config('WEBHOOK_URL'), msgDefaults)
 let content = tableMaker.create(stubbedRank)
 
 let msg = _.defaults({
-  channel: payload.channel_name,
   text: preformat(content),
   mrkdwn: true
 }, msgDefaults)
