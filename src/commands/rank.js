@@ -12,12 +12,17 @@ const msgDefaults = {
   icon_emoji: config('ICON_EMOJI')
 }
 
+function preformat(str) {
+  return '```' + str + '```'
+}
+
 const handler = (payload, res) => {
   let content = tableMaker.create(stubbedRank)
 
   let msg = _.defaults({
     channel: payload.channel_name,
-    attachments: [{text: content}]
+    text: preformat(content),
+    mrkdwn: true
   }, msgDefaults)
 
   res.set('content-type', 'application/json')
