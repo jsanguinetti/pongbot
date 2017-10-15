@@ -5,7 +5,7 @@ function _preformat (str) {
   return '```' + str + '```'
 }
 
-async function getCurrentRanking () {
+const getCurrentRanking = async () => {
   const lastRankings = await Ranking.findAll({
     limit: 1,
     order: [['createdAt', 'DESC']]
