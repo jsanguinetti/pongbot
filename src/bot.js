@@ -28,8 +28,11 @@ bot.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, () => {
 })
 
 bot.on(RTM_EVENTS.MESSAGE, (message) => {
-  console.log('message', message)
-  bot.sendMessage('pong :table_tennis_paddle_and_ball:', message.channel);
+  if (message.subtype !== 'bot_message' &&
+      message.text.indexOf('/pongbot') === -1) {
+    console.log('message', message)
+    bot.sendMessage('pong :table_tennis_paddle_and_ball:', message.channel);
+  }
 })
 
 module.exports = bot
