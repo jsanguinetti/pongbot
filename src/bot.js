@@ -7,6 +7,10 @@ const RTM_EVENTS = require('@slack/client').RTM_EVENTS
 const _ = require('lodash')
 const config = require('./config')
 
+// This is just an example of how we could use web API
+// const WebClient = require('@slack/client').WebClient
+// let web = new WebClient(config('SLACK_TOKEN'))
+// web.users.profile.get('U7JDJGBEG').then((res) => user = res, console.log)
 
 let bot = new RtmClient(config('SLACK_BOT_TOKEN'))
 
