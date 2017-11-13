@@ -19,14 +19,15 @@
     "@slack/client": "^3.14.1",
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
+    "excel": "^0.1.7",
     "express": "^4.13.4",
     "express-http-proxy": "^0.6.0",
     "lodash": "^4.6.1",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.13.17",
-    "standard": "^10.0.3",
     "sequelize-cli": "^3.0.0",
+    "standard": "^10.0.3",
     "string-table": "^0.1.5"
   },
   "keywords": [
@@ -37,6 +38,6 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">= 7.6.0"
+    "node": ">= 8.*"
   }
 }
