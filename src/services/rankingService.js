@@ -16,8 +16,8 @@ function _parseRanking(resolve, reject) {
     let pdsC = 0
     let setsC = 0
 
-    for (var i = 0; i < data[0].length; i++) {
-      var element = data[0][i];
+    for (let i = 0; i < data[0].length; i++) {
+      let element = data[0][i];
       if (element === "Nombre") {
         nameC = i
       } else if (element === "Pts") {
@@ -29,17 +29,18 @@ function _parseRanking(resolve, reject) {
       }
     }
 
-    for (var j = 0; j < 51; j++) {
+    for (let j = 1; j < 51; j++) {
       let row = data[j]
       const name = row[nameC]
       const points = row[ptsC]
       const matches = row[pdsC]
       const sets = row[setsC]
       rankings.push({
-        name: name,
-        points: points,
-        matches: matches,
-        sets: sets
+        '#': j,
+        Nombre: name,
+        Pts: points,
+        Pds: matches,
+        Sets: sets
       })
     }
     console.log(JSON.stringify(rankings))
